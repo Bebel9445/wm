@@ -1,14 +1,16 @@
 #include <curses.h>
 #include <signal.h>
 #include <unistd.h>
+#include <string.h>
 #include "wm.h"
 
 void add_smoke(int y, int x);
 int add_pzvitii(int x);
+int add_kv2(int x);
 void option(char *str);
 int my_mvaddstr(int y, int x, char *str);
 
-// int pzvitii = 0;
+int kv2 = 0;
 
 int my_mvaddstr(int y, int x, char *str)
 {
@@ -19,29 +21,23 @@ int my_mvaddstr(int y, int x, char *str)
     return OK;
 }
 
-/* no options for now
-
 void option(char *str) 
 {
-    while (*str != '\0') {
-        switch (*str++) {
-            default: break;
-        }
+    if (strcmp(str, "kv2") == 0) {
+        kv2 = 1;
     }
 }
-*/
+
 
 int main(int argc, char *argv[])
 {
-    int x;// i;
+    int x, i;
 
-    /*
     for (i = 1; i < argc; ++i) {
         if (*argv[i] == '-') {
             option(argv[i] + 1);
         }
     }
-    */
    
     initscr(); // initialize the window
     signal(SIGINT, SIG_IGN); // ignore SIGINT (ctrl-c)
@@ -53,7 +49,10 @@ int main(int argc, char *argv[])
     scrollok(stdscr, FALSE); // do not scroll the window
 
     for (x = COLS - 1; ; --x) {
-        if (add_pzvitii(x) == ERR) break;
+        if (kv2) {
+            if (add_kv2(x) == ERR) break;
+        }
+        else if (add_pzvitii(x) == ERR) break;    
         
         getch();
         refresh();
@@ -83,6 +82,30 @@ int add_pzvitii(int x) {
         my_mvaddstr(y + i, x, pzvitii[i]);
     }
     add_smoke(y + 14, x + 242);
+
+    return OK;
+}
+
+int add_kv2(int x) {
+    static char* kv2[KV2HEIGHT + 1] = {
+        KV2_1, KV2_2, KV2_3, KV2_4, KV2_5, KV2_6,
+        KV2_7, KV2_8, KV2_9, KV2_10, KV2_11,
+        KV2_12, KV2_13, KV2_14, KV2_15, KV2_16,
+        KV2_17, KV2_18, KV2_19, KV2_20, KV2_21,
+        KV2_22, KV2_23, KV2_24, KV2_25, KV2_26,
+        KV2_27, KV2_28, KV2_29, KV2_30, KV2_31,
+        KV2_32, KV2_33, KV2_34, KV2_35, KV2_36,
+        KV2_37, KV2_38, KV2_39, KV2_40, KV2_41,
+        KV2DEL
+    };
+    int y, i;
+    if (x < - KV2LENGTH)  return ERR;
+    y = LINES / 2 - 20;
+
+    for(i = 0; i <= KV2HEIGHT; ++i) {
+        my_mvaddstr(y + i, x, kv2[i]);
+    }
+    add_smoke(y + 20, x + 120);
 
     return OK;
 }
