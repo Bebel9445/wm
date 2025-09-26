@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
         if (kv2) {
             if (add_kv2(x) == ERR) break;
         }
-        else if (leclerc){
+        else if (leclerc) {
             if(add_leclerc(x) == ERR) break;
         }
         else if (add_pzvitii(x) == ERR) break; 
@@ -162,12 +162,12 @@ int add_leclerc(int x) {
     };
     int y, i;
     if (x < - LECLERCLENGTH)  return ERR;
-    y = LINES / 2 - 20;
+    y = LINES / 2 - 5;
 
     for(i = 0; i <= LECLERCHEIGHT; ++i) {
         my_mvaddstr(y + i, x, leclerc[i]);
     }
-    add_smoke(y + 12, x + 183);
+    add_smoke(y + 10, x + 175);
 
     return OK;
 }
