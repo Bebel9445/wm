@@ -89,3 +89,37 @@
 #define KV2_40 "                   @*#@@%@@@@@@%@@# @@#@@%@%@@@@@@%@%@@@%@@% @@@%@@@@@@%@% @@# @% @@%@@@@@@%@@% @@#@@@@@@@@@@%@@# @@%@@@@@@@@@@@@%##@ "
 #define KV2_41 "                      @###########*######*##########*######*######*######*##%#########**###*##*###*#############*##%###*#####%##% "
 #define KV2DEL "                                                                                                                                                       "
+
+
+
+
+#define LECLERCHEIGHT 26
+#define LECLERCLENGTH 184
+
+#define LECLERC_1  "                                                                                                                                                  A                                     "
+#define LECLERC_2  "                                                                                                kxyyvl9                                           P                                     "
+#define LECLERC_3  "                                                                                                lwyyvla   Qyyyyy                                  P                                     "
+#define LECLERC_4  "                                                                                                kwyywl9xyyyussrsAA          q          x          I Pwyyy                               "
+#define LECLERC_5  "                                                                                               yyyyyyWsytyssluuwvviuyPIILKKyyywhZRQQQOO6PQQQQQQQQRCWWxyyv                               "
+#define LECLERC_6  "                                                                                  zzzzzzzzzzylesvyy0yyyAAAAAAAAAAAAAAttOONNPIBHyyyzsuyvvnyyxyyyuyyAtyyyyyy                              "
+#define LECLERC_7  "                                                                        z345345423Db3yyyyyyyyyyyyyyzyyzyyyyqyyyypuhmssKNOPOQMKKyyy9NyyyLuyyyyyybOyAiyyyyyyyryyyy                        "
+#define LECLERC_8  "           zuz                                                       a00OLLJJIJJJKBa3ujyyyzqyyyyYyZyyyyyyyyyyxtpppuVOQRRQQQQRQQyyyyyyyyyyyyyyyJ9ry5EQQyyyyyppyyzp              9yyyyU   "
+#define LECLERC_9  "        wuvyyyuyyyyyyyyyyzyyyyxyyyyyyyyyzyzyzzzzzyzzzzzzzzzzzzcffeggfg3jVBEFFHGFGHA05yylyyyyyyyytyyyyyyyyyyyyyyyyySQQQQQQQOOOOOkxxxxxxxxxxxxy1J0Ay3fyyyyyyyw vk              LyyyyyyyyX "
+#define LECLERC_10 "        gfg66c9fffffffffffeffcSKGFVffeeeeefeeefffbefeeeeeeeeeeOONJPMJMKLGEAEEBEECEAbytyyyyyyoyyyuyyyyyyytnnsvyyyyxVLMMMMMMMMMMMMyxyyyyyyyyyyy1J0Xe3iyyyyyy                   xyyyyyyyyt "
+#define LECLERC_11 "                                                               uZFAAAEQdzzzzmyyyxoxxyyyyyyiywyyyqyyyxxyyyQLLyyyyyyyVMMMMMMMLMMMwyyyyyyyyyxxyy4I0syzszzzzz                    oyyyyyyyy2 "
+#define LECLERC_12 "                                                                              yyxbwwwyxxyyvxxxyyoyxxxxxyLKLLmxyyywyyLLLLDAAAAAABADCA      oQTR BBBAGBCCAAAAAAAAAAAAAAAAAAA GLE8yyyyyyN  "
+#define LECLERC_13 "                                                                         YWL 2JTAA  UYm9Qmuvd0aabbccdd9FEDBBO434444f4CBBBBBB2421ePihiihh2h3eghhhhhhhgggggg5fgfffffedddcb0FBGBAAADz      "
+#define LECLERC_14 "                                                         txy q5c  Zzr36RTWWVVzzzzqzzzzzzyywyyuxxyyyyyPNNNHENNxyyy5ysysMNNNNyxywyyyyyyyyyyyUuyyyyyyyyyyyyyykyyyyxxxxwwvvutAAAAAAdxy      "
+#define LECLERC_15 "                                                         zeyvazuxzzzYYXQXXXXXyzzznzzzzzzzzvyyyyyyyyyQQQPPCGOOtyyyyyayyNOONyyyyxyyyyyyyyyNOPKP8yyyyyyyyyyyypyyyyyyyxwywvvwAAAN           "
+#define LECLERC_16 "                                                     rkcq6czzzzzzzzxYYYTYXXXXWzzzszzzzzzzzwyyyyyyyyPRRRQQQQJQ1yyyyyyyycPRyyyyyyyyyyyyySNOQQQQQQPyyyyyyyyyyyyyyyyyyyyyyyyyy              "
+#define LECLERC_17 "                                                      yyyx8zzzzzzzzvYYYVYYYYXXyzzyzzzzzzzzwyyxyyyyyQQQQQQQQIPyyyyyyyyyyZyyyyyyyyyyyyyRQQOQQQQQQQQRyyyyyyyyyyyyyyyyyyyyyAyy              "
+#define LECLERC_18 "                                                      vyyh34zzzzzzzzvYZXXYYYYYzzzzzzzzzzzzxyyevxxxyNNNNNNNNJyyyyyyyyyyyyyyyyyyyyyyyxONNNLNNNNNNNNNLxyyyyyyyyxxxxxvuSAAEAA               "
+#define LECLERC_19 "                                                       yyyfS679acdfghhEFGFFFIeklmnmnnnooopody43677lGGGGGGMk7llkkkkkkkkkkkkkkkkkkknEGGGGGFGBBCCGGGGG6jjjjijiiij9NMjLRYAA A               "
+#define LECLERC_20 "                                                          AAQwyyywfflyCPPNQQyyyytyxyyyyyyyyexxyxyyy0MNNOO8yoyyyyyyyyyyyyyyyzzyyyyQQRRRRRPSQRRRRSRRR4zyzNIIIKMQ198XVZM4J                 "
+#define LECLERC_21 "                                                           AAAyyyyyyy2PQQQQPyyyyyzyyyyyyyyyyxyyyyyyyQQQQQQyqyyyyyyyyyyyyyyyyyyyydQQQQQPPOQRQQQQQPQQQyyyQAL2VUTKVUVTWUA                  "
+#define LECLERC_22 "                                                            YAAAtyyyQQQQQQQQyyyyyzyyyyyyyyyyxyyyyyyPPQPPQQ1nyyyyzyyyyyyyyyyyyyyyQQQQPPQQOQQRQQQQQPPQTyyg1ALL4USPPNTAAm                  "
+#define LECLERC_23 "                                                               iAAA    jMeHZ28GETaAHMFIdGRW8LFLbAJNNA9ZDD93XNfRAINA7cHD883KhZAIMA5hIX78PKe5AIOAVgL889EK98A   A YAAA                     "
+#define LECLERC_24 "                                                                  wAAE  A8eJYIZHeVA   A5fGXM2EeYA   ARcKYKYHg8A   bLaXXAVPb0A    E00TKPR4aGy   A0hPRHWSbOULbeAAA                        "
+#define LECLERC_25 "                                                                      AAIAG60b91Ah     AE50b92A1     nAZ0ba7IA      AU9bb8PA      AP8ba8SA      AN6aa0XAAAAA                            "
+#define LECLERC_26 "                                                                         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAV                               "
+#define LECLERCDEL "                                                                                                                                                                                        "
