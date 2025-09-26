@@ -1,7 +1,16 @@
+/*
+
+wm version 2.0 : add various options
+
+wm version 1.0 : wm runs in terminal and shows ASCII art
+
+*/
+
 #include <curses.h>
 #include <signal.h>
 #include <unistd.h>
 #include <string.h>
+#include <limits.h>
 #include "wm.h"
 
 void add_smoke(int y, int x);
@@ -11,6 +20,9 @@ void option(char *str);
 int my_mvaddstr(int y, int x, char *str);
 
 int kv2 = 0;
+int disco = 0;
+int blitz = 1;
+int escape = 1;
 
 int my_mvaddstr(int y, int x, char *str)
 {
@@ -23,9 +35,20 @@ int my_mvaddstr(int y, int x, char *str)
 
 void option(char *str) 
 {
-    if (strcmp(str, "kv2") == 0) {
-        kv2 = 1;
+    extern int kv2;
+    while (*str != '\0')
+    {
+        switch (*str)
+        {
+            case 'K': kv2 = 1; break;
+            case 'd': disco = 1; break;
+            case 'b': blitz = 4; break;
+            case 'e': escape = 0; break;
+            default: break;
+        }
+        str++;
     }
+    
 }
 
 
@@ -40,8 +63,17 @@ int main(int argc, char *argv[])
     }
    
     initscr(); // initialize the window
-    signal(SIGINT, SIG_IGN); // ignore SIGINT (ctrl-c)
-    signal(SIGTSTP, SIG_IGN); // ignore SIGTSTP (ctrl-z)
+    if (disco == 1) {
+        start_color();
+        init_pair(4, COLOR_RED, COLOR_BLACK);
+        init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+        init_pair(2, COLOR_GREEN, COLOR_BLACK);
+        init_pair(1, COLOR_CYAN, COLOR_BLACK);
+    }
+    if (escape) {
+        signal(SIGINT, SIG_IGN); // ignore SIGINT (ctrl-c)
+        signal(SIGTSTP, SIG_IGN); // ignore SIGTSTP (ctrl-z)
+    }
     noecho(); // do not echo input characters
     curs_set(0); // make cursor invisible
     nodelay(stdscr, TRUE); // make getch non-blocking
@@ -56,7 +88,7 @@ int main(int argc, char *argv[])
         
         getch();
         refresh();
-        usleep(40000);
+        usleep(40000 / blitz);
     }
     mvcur(0, COLS - 1, LINES - 1, 0);
     endwin();
@@ -137,6 +169,9 @@ void add_smoke(int y, int x)
     static int dx[SMOKEPTNS] = {-2, -1, 0, 1, 1, 1, 1, 1, 2, 2,
                                  2,  2, 2, 3, 3, 3             };
     int i;
+
+    if (disco && (x + INT_MAX/2) % 4 == 2)
+        attron(COLOR_PAIR((x + INT_MAX/2) / 16 % 4 + 1));
 
     if (x % 4 == 0) {
         for (i = 0; i < sum; ++i) {
