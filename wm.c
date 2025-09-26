@@ -16,10 +16,12 @@ wm version 1.0 : wm runs in terminal and shows ASCII art
 void add_smoke(int y, int x);
 int add_pzvitii(int x);
 int add_kv2(int x);
+int add_leclerc(int x);
 void option(char *str);
 int my_mvaddstr(int y, int x, char *str);
 
 int kv2 = 0;
+int leclerc = 0;
 int disco = 0;
 int blitz = 1;
 int escape = 1;
@@ -41,6 +43,7 @@ void option(char *str)
         switch (*str)
         {
             case 'K': kv2 = 1; break;
+            case 'L': leclerc = 1; break;
             case 'd': disco = 1; break;
             case 'b': blitz = 4; break;
             case 'e': escape = 0; break;
@@ -84,7 +87,11 @@ int main(int argc, char *argv[])
         if (kv2) {
             if (add_kv2(x) == ERR) break;
         }
-        else if (add_pzvitii(x) == ERR) break;    
+        else if (leclerc){
+            if(add_leclerc(x) == ERR) break;
+        }
+        else if (add_pzvitii(x) == ERR) break; 
+           
         
         getch();
         refresh();
@@ -141,6 +148,31 @@ int add_kv2(int x) {
 
     return OK;
 }
+
+
+
+int add_leclerc(int x) {
+    static char* leclerc[LECLERCHEIGHT + 1] = {
+        LECLERC_1, LECLERC_2, LECLERC_3, LECLERC_4, LECLERC_5, LECLERC_6,
+        LECLERC_7, LECLERC_8, LECLERC_9, LECLERC_10, LECLERC_11,
+        LECLERC_12, LECLERC_13, LECLERC_14, LECLERC_15, LECLERC_16,
+        LECLERC_17, LECLERC_18, LECLERC_19, LECLERC_20, LECLERC_21,
+        LECLERC_22, LECLERC_23, LECLERC_24, LECLERC_25, LECLERC_26,
+        LECLERCDEL
+    };
+    int y, i;
+    if (x < - LECLERCLENGTH)  return ERR;
+    y = LINES / 2 - 20;
+
+    for(i = 0; i <= LECLERCHEIGHT; ++i) {
+        my_mvaddstr(y + i, x, leclerc[i]);
+    }
+    add_smoke(y + 12, x + 183);
+
+    return OK;
+}
+
+
 
 void add_smoke(int y, int x)
 #define SMOKEPTNS 16
