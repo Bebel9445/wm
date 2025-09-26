@@ -1,2 +1,7 @@
-/build
 PKGBUILD
+/build
+src/
+pkg/
+*.pkg.tar.zst
+*.tar.gz
+.SRCINFO
