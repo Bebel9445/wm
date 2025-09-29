@@ -1,5 +1,7 @@
 /*
 
+wm version 2.3 : Add IS2, PZIV ausf. H and Maus
+
 wm version 2.2 : Add Katyusha and FT17
 
 wm version 2.1 : Add Leclerc MBT
@@ -23,6 +25,9 @@ int add_kv2(int x);
 int add_leclerc(int x);
 int add_katyusha(int x);
 int add_ft17(int x);
+int add_is2(int x);
+int add_pzivh(int x);
+int add_maus(int x);
 void option(char *str);
 int my_mvaddstr(int y, int x, char *str);
 
@@ -30,6 +35,9 @@ int kv2 = 0;
 int leclerc = 0;
 int katyusha = 0;
 int ft17 = 0;
+int is2 = 0;
+int pzivh = 0;
+int maus = 0;
 int disco = 0;
 int blitz = 1;
 int escape = 1;
@@ -54,6 +62,9 @@ void option(char *str)
             case 'L': leclerc = 1; break;
             case 'B': katyusha = 1; break;
             case 'F': ft17 = 1; break;
+            case 'I': is2 = 1; break;
+            case 'P': pzivh = 1; break;
+            case 'M': maus = 1; break;
             case 'd': disco = 1; break;
             case 'b': blitz = 4; break;
             case 'e': escape = 0; break;
@@ -105,6 +116,15 @@ int main(int argc, char *argv[])
         }
         else if (ft17) {
             if(add_ft17(x) == ERR) break;
+        }
+        else if (is2) {
+            if(add_is2(x) == ERR) break;
+        }
+        else if (pzivh) {
+            if(add_pzivh(x) == ERR) break;
+        }
+        else if (maus) {
+            if(add_maus(x) == ERR) break;
         }
         else if (add_pzvitii(x) == ERR) break; 
            
@@ -231,6 +251,79 @@ int add_ft17(int x) {
         my_mvaddstr(y + i, x, ft17[i]);
     }
     add_smoke(y + 18, x + 140);
+
+    return OK;
+}
+
+int add_is2(int x) {
+    static char* is2[IS2HEIGHT + 1] = {
+        IS2_1, IS2_2, IS2_3, IS2_4, IS2_5, IS2_6,
+        IS2_7, IS2_8, IS2_9, IS2_10, IS2_11,
+        IS2_12, IS2_13, IS2_14, IS2_15, IS2_16,
+        IS2_17, IS2_18, IS2_19, IS2_20, IS2_21,
+        IS2_22, IS2_23, IS2_24, IS2_25, IS2_26,
+        IS2_27, IS2_28, IS2_29, IS2_30, IS2_31,
+        IS2_32, IS2_33, IS2_34, IS2_35, IS2_36,
+        IS2_37, IS2_38, IS2_39, IS2_40,
+        IS2DEL
+    };
+    int y, i;
+    if (x < - IS2LENGTH) return ERR;
+    y = LINES / 2 - 20;
+
+    for(i = 0; i <= IS2HEIGHT; ++i) {
+        my_mvaddstr(y + i, x, is2[i]);
+    }
+    add_smoke(y + 17, x + 195);
+
+    return OK;
+}
+
+int add_pzivh(int x) {
+    static char* pzivh[PZIVHHEIGHT + 1] = {
+        PZIVH_1, PZIVH_2, PZIVH_3, PZIVH_4, PZIVH_5, PZIVH_6,
+        PZIVH_7, PZIVH_8, PZIVH_9, PZIVH_10, PZIVH_11,
+        PZIVH_12, PZIVH_13, PZIVH_14, PZIVH_15, PZIVH_16,
+        PZIVH_17, PZIVH_18, PZIVH_19, PZIVH_20, PZIVH_21,
+        PZIVH_22, PZIVH_23, PZIVH_24, PZIVH_25, PZIVH_26,
+        PZIVH_27, PZIVH_28, PZIVH_29, PZIVH_30, PZIVH_31,
+        PZIVH_32, PZIVH_33, PZIVH_34, PZIVH_35, PZIVH_36,
+        PZIVH_37, PZIVH_38, PZIVH_39, PZIVH_40, PZIVH_41,
+        PZIVHDEL
+    };
+
+    int y, i;
+    if (x < - PZIVHLENGTH)  return ERR;
+    y = LINES / 2 - 20;
+
+    for(i = 0; i <= PZIVHHEIGHT; ++i) {
+        my_mvaddstr(y + i, x, pzivh[i]);
+    }
+    add_smoke(y + 19, x + 190);
+
+    return OK;
+}
+
+int add_maus(int x) {
+    static char* maus[MAUSHEIGHT + 1] = {
+        MAUS_1, MAUS_2, MAUS_3, MAUS_4, MAUS_5, MAUS_6,
+        MAUS_7, MAUS_8, MAUS_9, MAUS_10, MAUS_11,
+        MAUS_12, MAUS_13, MAUS_14, MAUS_15, MAUS_16,
+        MAUS_17, MAUS_18, MAUS_19, MAUS_20, MAUS_21,
+        MAUS_22, MAUS_23, MAUS_24, MAUS_25, MAUS_26,
+        MAUS_27, MAUS_28, MAUS_29, MAUS_30, MAUS_31,
+        MAUS_32, MAUS_33, MAUS_34, MAUS_35, MAUS_36,
+        MAUS_37, MAUS_38, MAUS_39, MAUS_40, MAUS_41,
+        MAUSDEL
+    };
+    int y, i;
+    if (x < - MAUSLENGTH) return ERR;
+    y = LINES / 2 - 20;
+
+    for(i = 0; i <= MAUSHEIGHT; ++i) {
+        my_mvaddstr(y + i, x, maus[i]);
+    }
+    add_smoke(y + 20, x + 200);
 
     return OK;
 }

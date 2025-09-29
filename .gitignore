@@ -5,3 +5,4 @@ pkg/
 *.pkg.tar.zst
 *.tar.gz
 .SRCINFO
+deb
