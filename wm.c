@@ -1,6 +1,10 @@
 /*
 
-wm version 2.0 : add various options
+wm version 2.2 : Add Katyusha and FT17
+
+wm version 2.1 : Add Leclerc MBT
+
+wm version 2.0 : Add various options
 
 wm version 1.0 : wm runs in terminal and shows ASCII art
 
@@ -17,11 +21,15 @@ void add_smoke(int y, int x);
 int add_pzvitii(int x);
 int add_kv2(int x);
 int add_leclerc(int x);
+int add_katyusha(int x);
+int add_ft17(int x);
 void option(char *str);
 int my_mvaddstr(int y, int x, char *str);
 
 int kv2 = 0;
 int leclerc = 0;
+int katyusha = 0;
+int ft17 = 0;
 int disco = 0;
 int blitz = 1;
 int escape = 1;
@@ -37,13 +45,15 @@ int my_mvaddstr(int y, int x, char *str)
 
 void option(char *str) 
 {
-    extern int kv2;
+    extern int kv2, leclerc, katyusha, disco, blitz, escape;
     while (*str != '\0')
     {
         switch (*str)
         {
             case 'K': kv2 = 1; break;
             case 'L': leclerc = 1; break;
+            case 'B': katyusha = 1; break;
+            case 'F': ft17 = 1; break;
             case 'd': disco = 1; break;
             case 'b': blitz = 4; break;
             case 'e': escape = 0; break;
@@ -90,9 +100,14 @@ int main(int argc, char *argv[])
         else if (leclerc) {
             if(add_leclerc(x) == ERR) break;
         }
+        else if (katyusha) {
+            if(add_katyusha(x) == ERR) break;
+        }
+        else if (ft17) {
+            if(add_ft17(x) == ERR) break;
+        }
         else if (add_pzvitii(x) == ERR) break; 
            
-        
         getch();
         refresh();
         usleep(40000 / blitz);
@@ -161,7 +176,7 @@ int add_leclerc(int x) {
         LECLERCDEL
     };
     int y, i;
-    if (x < - LECLERCLENGTH)  return ERR;
+    if (x < - LECLERCLENGTH) return ERR;
     y = LINES / 2 - 5;
 
     for(i = 0; i <= LECLERCHEIGHT; ++i) {
@@ -172,7 +187,53 @@ int add_leclerc(int x) {
     return OK;
 }
 
+int add_katyusha(int x) {
+    static char* katyusha[KATYUSHAHEIGHT + 1] = {
+        KATYUSHA_1, KATYUSHA_2, KATYUSHA_3, KATYUSHA_4, KATYUSHA_5, KATYUSHA_6,
+        KATYUSHA_7, KATYUSHA_8, KATYUSHA_9, KATYUSHA_10, KATYUSHA_11,
+        KATYUSHA_12, KATYUSHA_13, KATYUSHA_14, KATYUSHA_15, KATYUSHA_16,
+        KATYUSHA_17, KATYUSHA_18, KATYUSHA_19, KATYUSHA_20, KATYUSHA_21,
+        KATYUSHA_22, KATYUSHA_23, KATYUSHA_24, KATYUSHA_25, KATYUSHA_26,
+        KATYUSHA_27, KATYUSHA_28, KATYUSHA_29, KATYUSHA_30, KATYUSHA_31,
+        KATYUSHA_32, KATYUSHA_33, KATYUSHA_34, KATYUSHA_35, KATYUSHA_36,
+        KATYUSHA_37, KATYUSHA_38, KATYUSHA_39, KATYUSHA_40, KATYUSHA_41,
+        KATYUSHADEL
+    };
+    int y, i;
+    if (x < - KATYUSHALENGTH) return ERR;
+    y = LINES / 2 - 20;
 
+    for(i = 0; i <= KATYUSHAHEIGHT; ++i) {
+        my_mvaddstr(y + i, x, katyusha[i]);
+    }
+    add_smoke(y + 28, x + 145);
+
+    return OK;
+}
+
+int add_ft17(int x) {
+    static char* ft17[FT17HEIGHT + 1] = {
+        FT17_1, FT17_2, FT17_3, FT17_4, FT17_5, FT17_6,
+        FT17_7, FT17_8, FT17_9, FT17_10, FT17_11,
+        FT17_12, FT17_13, FT17_14, FT17_15, FT17_16,
+        FT17_17, FT17_18, FT17_19, FT17_20, FT17_21,
+        FT17_22, FT17_23, FT17_24, FT17_25, FT17_26,
+        FT17_27, FT17_28, FT17_29, FT17_30, FT17_31,
+        FT17_32, FT17_33, FT17_34, FT17_35, FT17_36,
+        FT17_37, FT17_38, FT17_39, FT17_40,
+        FT17DEL
+    };
+    int y, i;
+    if (x < - FT17LENGTH) return ERR;
+    y = LINES / 2 - 20;
+
+    for(i = 0; i <= FT17HEIGHT; ++i) {
+        my_mvaddstr(y + i, x, ft17[i]);
+    }
+    add_smoke(y + 18, x + 140);
+
+    return OK;
+}
 
 void add_smoke(int y, int x)
 #define SMOKEPTNS 16
